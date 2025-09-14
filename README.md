@@ -25,6 +25,16 @@ Create a .env:
 SECRET_KEY=your_secret_key
 DATABASE_URL=postgresql://username:password@localhost/skill_swap_db
 
+# Tech Stack
+
+Python 3.x
+Flask
+Flask-WTF
+Flask-Login
+SQLAlchemy
+PostgreSQL
+Pandas
+
 # Screenshots
 
 ### Register
