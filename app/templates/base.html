@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>SKILL SWAP</title>
+</head>
+<body>
+    <nav>
+        {% if current_user.is_authenticated %}
+            Hello, {{ current_user.username }} |
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a> |
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+        <hr>
+    </nav>
+
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, msg in messages %}
+        <p style="color:red">{{ msg }}</p>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+</body>
+</html>

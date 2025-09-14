@@ -1,0 +1,41 @@
+
+<html>
+    <body>
+         <nav>
+        {% if current_user.is_authenticated %}
+            Hello, {{ current_user.username }} |
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+            <a href="{{url_for('skill.add_skill')}}">Add Skill</a>"
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a> |
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+        <hr>
+    </nav>
+
+    <h1>Welcome, {{ user.username }}</h1>
+
+<h2>Your Skills</h2>
+<ul>
+  {% for s in user_skills %}
+  <li>{{ s.skill_name }} ({{ s.type }})</li>
+  {% endfor %}
+</ul>
+
+<h2>Available Matches</h2>
+<ul>
+  {% if matches %}
+    {% for m in matches %}
+      <li>
+        {{ m.requester[0] }} ({{ m.requester[1] }}) wants to learn <b>{{ m.skill }}</b>,
+        and {{ m.provider[0] }} ({{ m.provider[1] }}) can teach it!
+      </li>
+    {% endfor %}
+{% else %}
+    <li>No matches found yet.</li>
+{% endif %}
+
+</ul>
+
+    </body>
+</html>
